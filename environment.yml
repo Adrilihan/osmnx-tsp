@@ -1,0 +1,10 @@
+name: osmnx-tsp
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - ipykernel
+  - osmnx
+  - python-tsp
+  - contextily 
