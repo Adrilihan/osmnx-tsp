@@ -1,47 +1,36 @@
-# Hamiltonian Cycle Project (Combinatorical Optimization course project)
+# Travelling Salesman Problem on the Road Network Graph
 
-## Project Description
+A simple project developed as part of [Combinatorical Optimization](https://www.ua.pt/pt/uc/4480) curriculum unit where the objective was to solve a modified **Traveling Salesman Problem (TSP)**. Classicaly this problem is solved by finding the shortest possible cycle that visits a set of locations exactly once and returns to the starting point (i.e., a Hamiltonian cycle). In this modified version, the challenge was twofold: first, to determine the shortest route that visits 8 out of a given list of 10 churches in the city of Porto; and second, to solve the problem using the real-world pedestrian road network — yielding the following result
 
-This project aims to solve the **Traveling Salesman Problem (TSP)** using real-world geographical locations, such as churches. The goal is to find a **Hamiltonian cycle** for a given graph, which represents a complete tour of all the locations, visiting each location exactly once and returning to the starting point.
+<p align="center">
+  <img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 50%;
+           height: 50%;"
+    src="https://github.com/user-attachments/assets/f3244725-17ff-4169-a682-687091eac9f7" 
+    alt="Modified TSP solution displayed onto the road network of OPorto">
+</p>
 
-We use the **osmnx** package [[1], [2]] to get the locations of the churches. This package allows us to retrieve, model, analyze, and visualize street networks from OpenStreetMap.
+**OSMnx** package was used to get the locations of the churches and extract the road network [^1].
 
-## Problem Statement
+## Algorithms Used
 
-The Traveling Salesman Problem is a classic algorithmic problem in the field of computer science and operations research. It focuses on optimization. In this problem, a salesman is given a list of cities and must determine the shortest route that allows him to visit each city once and return to his original location.
+There are various algorithmic strategies and heuristics to solve the Travelling Salesman Problem (TSP), each with different trade-offs between accuracy and computational efficiency. In this project, the following approaches were evaluated:
 
-In our case, we are trying to find a Hamiltonian cycle in a graph where nodes represent geographical locations (e.g., churches) and edges represent the paths between them. A Hamiltonian cycle is a closed loop on a graph where every node (vertex) is visited exactly once.
+- Local Search
+- Simulated Annealing
+- Branch and Bound
 
-## Methodology
+## Usage
 
-There are various algorithmic strategies and heuristics to solve this problem. Here is an overview of the algorithms that are available to get Hamiltonian cycles:
+To run this project, use the conda environment defined in the `environment.yml` with
 
-1. **Brute Force Method**: This method involves generating all permutations of the vertices and checking each permutation for a Hamiltonian cycle. This method is simple but not efficient for large graphs.
-
-2. **Backtracking Algorithm**: This method involves creating a path and backtracking whenever the path doesn't lead to a solution. It is more efficient than the brute force method.
-
-3. **Greedy Algorithm**: This method involves making the choice that seems best at the moment. It doesn't always lead to the optimal solution but it's efficient for large graphs.
-
-4. **Dynamic Programming**: This method involves breaking down the problem into smaller subproblems and solving each one only once.
-
-5. **Genetic Algorithm**: This method involves using techniques inspired by evolutionary biology such as mutation, crossover, and selection.
-
-in this project the algorithm that is going t
-
-## Installation and Usage
-
-To use this project, you need to have Docker installed on your machine. You can run the project directly from the official OSMnx Docker image [[3]]. To run the Docker image, use the following command:
-
-```bash
-docker run --rm -it --name osmnx -p 8888:8888 -v "$PWD":/home/jovyan/work gboeing/osmnx
+```sh
+conda env create -f environment.yml
 ```
-
-**Note:** As the Docker image is somewhat large (> 3Gb) it may fail downloading sometimes because of an instable connection, for that the only solution is just trying again the command. 
 
 ## References
 
-[[1]]: OSMnx: Python for Street Networks. Retrieved from https://osmnx.readthedocs.io/ 
-
-[[2]]: Boeing, G. 2017. “OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks.” Computers, Environment and Urban Systems. 65, 126-139. doi:10.1016/j.compenvurbsys.2017.05.004 
-
-[[3]]: OSMnx Docker Image. Retrieved from https://hub.docker.com/r/gboeing/osmnx : Docker Installation Guide. Retrieved from https://docs.docker.com/get-docker/ 
+[^1]: Boeing, G. (2025). [Modeling and Analyzing Urban Networks and Amenities with OSMnx](https://doi.org/10.1111/gean.70009). Geographical Analysis, published online ahead of print. doi:10.1111/gean.70009
